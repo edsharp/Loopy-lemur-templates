@@ -26,3 +26,5 @@ You need to run Lemur, MidiBridge and Loopy HD.
 * Open Lemur on your remote device and set the target to the network session
 
 The remote usage may not work if your remote session is named anything other than Network Session 1.
+
+![Screenshot](/Loopy iPad.png)
