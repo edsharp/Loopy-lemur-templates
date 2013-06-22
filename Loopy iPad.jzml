@@ -887,7 +887,8 @@ for(i=0; i<maxTracks; i++) {
 		colors[i] = HSV(0.83,1,1); // Empty selected - purple
 		if (firstEmpty == maxTracks) {
 			firstEmpty = i;
-			labels[i] = 'Record?';
+			if (nextAction != 'mute')
+				labels[i] = 'Record?';
 			if ((nextAction == 'record') || (nextAction == 'toggleAndRecord') || (nextAction == 'playRec')) {
 				labels[i] = 'Will record';
 			}
