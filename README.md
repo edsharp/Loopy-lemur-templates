@@ -27,4 +27,10 @@ You need to run Lemur, MidiBridge and Loopy HD.
 
 The remote usage may not work if your remote session is named anything other than Network Session 1.
 
+### Tips
+
+* When you start using the template, don't forget to double tap the reset session button (top row, middle button) to both reset the template and Loopy
+* The record and toggle mute buttons work when you lift you finger off them
+* The clear track button needs a double-tap to ensure no accidental clearing of tracks
+
 ![Screenshot](/Loopy iPad.png)
