@@ -1,0 +1,24 @@
+Notes
+
+0-11 on C-1 to B-1 Select track 1 - 12
+
+20 on G#0 Select previous track
+21 on A0 Select next track
+22 on A#0 Toggle mute (selected)
+23 off B0 Toggle record (selected)
+24 on C1 Double clock length
+25 on C#1 Halve clock length
+26 on D1 Restart session
+27 on D#1 Reset session
+28 on E1 Toggle session pause
+29 on F#1 Toggle metronome
+30 on F#1 Clear track (selected)
+31 off G1 Toggle record without count-in/out
+33 on A1 Toggle record, mute, then select next track
+
+34-45 on A#1 to A2 Toggle mute 1 - 12
+
+CCs
+
+31-42 Track volumes 1 - 12
+43-54 Track pans 1 - 12

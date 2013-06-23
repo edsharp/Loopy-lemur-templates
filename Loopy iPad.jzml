@@ -884,7 +884,11 @@ for(i=0; i<maxTracks; i++) {
 			colors[i] = RGB(0.5,0,0);
 		}
 	} else if(selectedTracks[i]) {
-		colors[i] = HSV(0.83,1,1); // Empty selected - purple
+		if (nextAction == 'mute') {
+			colors[i] = RGB(0.5,0.5,0.5);
+		} else {
+			colors[i] = HSV(0.83,1,1); // Empty selected - purple
+		}
 		if (firstEmpty == maxTracks) {
 			firstEmpty = i;
 			if (nextAction != 'mute')
@@ -892,6 +896,9 @@ for(i=0; i<maxTracks; i++) {
 			if ((nextAction == 'record') || (nextAction == 'toggleAndRecord') || (nextAction == 'playRec')) {
 				labels[i] = 'Will record';
 			}
+		} else {
+			if (nextAction != 'mute')
+				labels[i] = 'then record';
 		}
 	}
 	setattribute(VFaders.ary[i],'color',colors[i]);
@@ -900,22 +907,6 @@ for(i=0; i<maxTracks; i++) {
 setattribute(Tracks,'colors',colors);
 setattribute(Tracks,'labels',labels);
 setattribute(MultiPan,'colors',colors);" trigger_script="" trigger_type="4" trigger="1" osc_message="/updateTrackColors" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="muteSelectedTrack()" script="if (trackStates[selectedTrack] == 0) {
-	return;
-}
-
-noteout(0,22,127,1);
-
-if (trackStates[selectedTrack] > 1) {
-	if (trackStates[selectedTrack] == 3) {
-		trackStates[selectedTrack] = 2;
-	} else {
-		trackStates[selectedTrack] = 3;
-	}
-} else {
-	trackStates[selectedTrack] = 3;
-	recordingTrack = maxTracks;
-}" trigger_script="Mute.x" trigger_type="4" trigger="2" osc_message="/muteSelectedTrack" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="setSelectedTrack(newTrack)" script="noteout(0,0+newTrack,127,1);
 selectedTrack = newTrack;" trigger_script="" trigger_type="4" trigger="1" osc_message="/setSelectedTrack" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="clearSelectedTrack()" script="noteout(0,30,127,1);
@@ -932,17 +923,17 @@ setTrackPan(selectedTrack,0.5);" trigger_script="" trigger_type="4" trigger="1" 
 for (i=0;i<maxTracks;i++) {
 	if (!selectedTracks[i]) continue;
 
-	setSelectedTrack(i);
 	if (action == 'clear') {
+		setSelectedTrack(i);
 		clearSelectedTrack();
 	} else if (action == 'mute') {
-		muteSelectedTrack();
+		muteTrack(i);
 	}
 }
 
 setNextAction('');
 updateTrackColors();" trigger_script="" trigger_type="4" trigger="1" osc_message="/toSelectedTracks" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="setTrackVolume(track, vol)" script="ctlout(0,31+track,vol*127,1);
+<SCRIPT name="setTrackVolume(track, vol)" script="ctlout(0,31+track,xToVol(vol),1);
 setexpression(VFaders.ary[track],'x',vol);
 trackVolumes[track]=vol;" trigger_script="" trigger_type="4" trigger="1" osc_message="/setTrackVolume" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="setTrackPan(track, pan)" script="ctlout(0,43+track,pan*127,1);
@@ -1044,17 +1035,23 @@ for (i=0;i<maxTracks;i++) {
 	// Ignore empty or correct
 	if (!trackStates[i] || (trackStates[i] == state)) continue;
 
-	setSelectedTrack(i);
-
-	// If it's in record put it into play come what may
 	if (trackStates[i] == 1) {
-		noteout(0,33,127,1);
-		trackStates[i] = 3;
-		// If we were after play, then nothing more to do
-		if (state == 3) continue;
-	}
+		// If recording use select track
+		setSelectedTrack(i);
 
-	muteSelectedTrack();
+		if (state == 3) {
+			// We want play, so just toggle
+			noteout(0,23,127,1); // Toggle record
+			trackStates[i] = 3;
+		} else {
+			// We want stop, so mute
+			noteout(0,33,127,1); // Toggle record, mute, then select next track
+			trackStates[i] = 2;
+		}
+	} else {
+		// Otherwise just toggle
+		muteTrack(i);
+	}	
 }
 updateTrackColors();" trigger_script="" trigger_type="4" trigger="1" osc_message="/putTracksInState" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="canRecord()" script="return ((sumof(selectedTracks) == 1) || (firstEmpty < maxTracks));" trigger_script="" trigger_type="4" trigger="1" osc_message="/canRecord" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
@@ -1077,4 +1074,21 @@ for (i=0;i<maxTracks;i++) {
 	total = total + values[i];
 }
 return total / sumof(tracks);" trigger_script="" trigger_type="4" trigger="1" osc_message="/averageFor" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="xToVol(x)" script="return ((2 * x - 1) ^ 3 + 1) / 2 * 127;" trigger_script="" trigger_type="4" trigger="1" osc_message="/xToVol" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="muteTrack(i)" script="if (trackStates[i] == 0) {
+	return;
+}
+
+noteout(0,34+i,127,1);
+
+if (trackStates[i] > 1) {
+	if (trackStates[i] == 3) {
+		trackStates[i] = 2;
+	} else {
+		trackStates[i] = 3;
+	}
+} else {
+	trackStates[i] = 3;
+	recordingTrack = maxTracks;
+}" trigger_script="" trigger_type="4" trigger="1" osc_message="/muteTrack" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </JZML>
