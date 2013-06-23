@@ -5,7 +5,7 @@ Notes
 20 on G#0 Select previous track
 21 on A0 Select next track
 22 on A#0 Toggle mute (selected)
-23 off B0 Toggle record (selected)
+23 on B0 Toggle record (selected)
 24 on C1 Double clock length
 25 on C#1 Halve clock length
 26 on D1 Restart session
@@ -13,10 +13,13 @@ Notes
 28 on E1 Toggle session pause
 29 on F#1 Toggle metronome
 30 on F#1 Clear track (selected)
-31 off G1 Toggle record without count-in/out
+31 on G1 Toggle record without count-in/out (selected)
+32 on G#1 Toggle record, then overdub (selected)
 33 on A1 Toggle record, mute, then select next track
 
 34-45 on A#1 to A2 Toggle mute 1 - 12
+
+46-57 on  A#2 to A3 Toggle record 1 - 12
 
 CCs
 

@@ -360,7 +360,8 @@ lastTouched = 0;
 <WINDOW class="CustomButton" text="Metronome" x="0" y="104" width="140" height="97" id="10" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="0" bitmap="0,0" capture="1" color="8355711,8328968" label_off="Metronome off" label_on="Metronome on" outline="1">
 <PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Metronome/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,29,29" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Metronome/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<SCRIPT name="toggle()" script="noteout(0,29,127,1);" trigger_script="x" trigger_type="0" trigger="1" osc_message="/Metronome/toggle" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="toggle()" script="noteout(0,29,127,1);
+noteout(0,29,0,1);" trigger_script="x" trigger_type="0" trigger="1" osc_message="/Metronome/toggle" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
 <WINDOW class="CustomButton" text="ClearTrack" x="142" y="584" width="140" height="140" id="11" state="241" group="0" font="tahoma,8,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="0" bitmap="14,14" capture="1" color="8355711,8338688" label_off="Clear" label_on="Clear" outline="1">
 <PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/ClearTrack/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,30,30" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
@@ -399,7 +400,7 @@ if ((time - lastTouched) > doubleTapWindow) {
 " trigger_script="" trigger_type="1" trigger="1" osc_message="/ClearTrack/frame" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
 <WINDOW class="MultiSlider" text="RelVol" x="438" y="122" width="67" height="551" id="18" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bipolar="0" capture="1" color="1596013" gradient="1" grid="0" grid_steps="1" horizontal="0" label="1" multicolor="0" nbr="1" physic="0">
-<PARAM name="x=" value="0.500000" send="17" osc_target="0" osc_trigger="1" osc_message="/RelVol/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<PARAM name="x=" value="nan" send="17" osc_target="0" osc_trigger="1" osc_message="/RelVol/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <PARAM name="z=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/RelVol/z" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="tension=.1" send="0" osc_target="0" osc_trigger="1" osc_message="/RelVol/tension" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="friction=0.9" send="0" osc_target="0" osc_trigger="1" osc_message="/RelVol/friction" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
@@ -643,7 +644,7 @@ setattribute(Vol,'color',getattribute(Controls,'color'));" trigger_script="z" tr
 </WINDOW>
 <VARIABLE name="i=" value="3" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P3/i" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,17856,75" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
-<VARIABLE name="ary=" value="28048516,27729028,29337732,29418628" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="ary=" value="68401796,68403332,68404868,68933252" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="slidersTouched=" value="0,0,0,0" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/slidersTouched" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="27999,29541,24947" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="reset()" script="slidersTouched = fill(1,0,numStores);
 
@@ -805,6 +806,17 @@ BeatLeds.value = values;
 <VARIABLE name="value=nextAction" send="0" osc_target="0" osc_trigger="1" osc_message="/NextActionMon/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
 </WINDOW>
+<WINDOW class="JAZZINTERFACE" text="3 Map" x="0" y="0" width="1024" height="724" id="2" state="0" group="0" font="tahoma,11,0" >
+<WINDOW class="Pads" text="Pads" x="312" y="180" width="493" height="452" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" color="865343,1596013" column="3" label="0" multicolor="0" multilabel="0" row="4">
+<PARAM name="x=" value="0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Pads/x" midi_target="0" midi_trigger="1" midi_message="0x90,0x90,31,42" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="attack=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Pads/attack" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="decay=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Pads/decay" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="sustain=1" send="0" osc_target="0" osc_trigger="1" osc_message="/Pads/sustain" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="release=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Pads/release" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="hold=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Pads/hold" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Pads/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+</WINDOW>
 <VARIABLE name="trackStates=" value="0,0,0,0,0,0,0,0,0,0,0,0" send="1" osc_target="0" osc_trigger="1" osc_message="/trackStates" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="maxTracks=12" send="1" osc_target="0" osc_trigger="1" osc_message="/maxTracks" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="recordLength=1" send="1" osc_target="0" osc_trigger="1" osc_message="/recordLength" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
@@ -908,9 +920,13 @@ setattribute(Tracks,'colors',colors);
 setattribute(Tracks,'labels',labels);
 setattribute(MultiPan,'colors',colors);" trigger_script="" trigger_type="4" trigger="1" osc_message="/updateTrackColors" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="setSelectedTrack(newTrack)" script="noteout(0,0+newTrack,127,1);
+noteout(0,0+newTrack,0,1);
 selectedTrack = newTrack;" trigger_script="" trigger_type="4" trigger="1" osc_message="/setSelectedTrack" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="clearSelectedTrack()" script="noteout(0,30,127,1);
+noteout(0,30,0,1);
+
 noteout(0,30,127,1);
+noteout(0,30,0,1);
 
 if (recordingTrack == selectedTrack) {
 	recordingTrack = maxTracks;
@@ -947,13 +963,19 @@ trackPans[track]=pan;" trigger_script="" trigger_type="4" trigger="1" osc_messag
 		// No mute key, so rec -> play
 		trackStates[selectedTrack] = 3;
 		noteout(0,23,127,1);
+		noteout(0,23,0,1);
 		Mute.ignore = 0;
 	} else if (!Mute.ignore) {
-		// Mute has been re-pressed, so rec -> play, then toggle all
-		trackStates[selectedTrack] = 3;
-		noteout(0,23,127,1);
-		// Then toggle all
-		Mute.x = 0; // This will mute all
+		// This reset Mute without doing anything
+		Mute.ignore = 1;
+		Mute.x = 0;
+
+		noteout(0,33,127,1);
+		noteout(0,33,0,1);
+	
+		selectedTracks[selectedTrack] = 0;
+		toSelectedTracks('mute');
+		selectedTracks[selectedTrack] = 1;
 	} else {
 		// Mute has been held, so toggle all will
 		// set toggle others and set our new track to play
@@ -974,15 +996,15 @@ trackPans[track]=pan;" trigger_script="" trigger_type="4" trigger="1" osc_messag
 	}
 
 	if (sumof(selectedTracks) == 1) {
-		setSelectedTrack(firstof(selectedTracks));
+		recordingTrack = firstof(selectedTracks);
 	} else {
-		setSelectedTrack(firstEmpty);
+		recordingTrack = firstEmpty;
 	}
 
-	recordingTrack = selectedTrack;
-	trackStates[selectedTrack] = 1;
+	trackStates[recordingTrack] = 1;
 
-	noteout(0,23,127,1);
+	noteout(0,46+recordingTrack,127,1);
+	noteout(0,46+recordingTrack,0,1);
 }
 
 setNextAction('');
@@ -996,6 +1018,7 @@ show(ResetSessionReally,0);
 setattribute(ResetSessionReally,'color',HSV(.083,1,1));
 
 noteout(0,27,127,1);
+noteout(0,27,0,1);
 Mute.ignore = 0;
 trackStates = fill(1,0,maxTracks);
 trackVolumes = fill(1,0.5,maxTracks);
@@ -1013,19 +1036,13 @@ MIDIClock.startsong = 0;
 MIDIClock.stopsong = 0;
 MIDIClock.tick = 0;
 
-clearSelection();
-Presets.reset(); // Must be after clearSelection
-
-selectedTracks[0] = 1;
-RelVol.setToAverage();
-RelPan.setToAverage();
-
-noteout(0,0,127,1); // Select track 0
-selectedTrack=0;
 recordingTrack=maxTracks;
-setNextAction('');
+clearSelection();
+selectedTracks[0] = 1;
+Presets.reset(); // Must be after clearSelection
 updateTrackColors();
-Record.update();" trigger_script="" trigger_type="5" trigger="1" osc_message="/resetSession" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+Record.update();
+" trigger_script="" trigger_type="5" trigger="1" osc_message="/resetSession" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="putTracksInState(tracks, state)" script="if (state < 2) return; // Don't set to record or empty
 
 decl i;
@@ -1037,15 +1054,17 @@ for (i=0;i<maxTracks;i++) {
 
 	if (trackStates[i] == 1) {
 		// If recording use select track
-		setSelectedTrack(i);
-
 		if (state == 3) {
 			// We want play, so just toggle
-			noteout(0,23,127,1); // Toggle record
+			noteout(0,46+i,127,1); // Toggle record
+			noteout(0,46+1,0,1); // Toggle record
 			trackStates[i] = 3;
 		} else {
 			// We want stop, so mute
+			setSelectedTrack(i);
+
 			noteout(0,33,127,1); // Toggle record, mute, then select next track
+			noteout(0,33,0,1); // Toggle record, mute, then select next track
 			trackStates[i] = 2;
 		}
 	} else {
@@ -1080,6 +1099,7 @@ return total / sumof(tracks);" trigger_script="" trigger_type="4" trigger="1" os
 }
 
 noteout(0,34+i,127,1);
+noteout(0,34+i,0,1);
 
 if (trackStates[i] > 1) {
 	if (trackStates[i] == 3) {
