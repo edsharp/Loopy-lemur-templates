@@ -203,7 +203,7 @@ x = sumof(selectedTracks) ? pans : 0.5;" trigger_script="" trigger_type="4" trig
 <SCRIPT name="touched()" script="sliderTouched(i);" trigger_script="z" trigger_type="0" trigger="2" osc_message="/VFaders/MultiSlider12/touched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="released()" script="sliderReleased();" trigger_script="z" trigger_type="0" trigger="3" osc_message="/VFaders/MultiSlider12/released" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
-<VARIABLE name="ary=" value="11261572,10189956,10236036,10284676,11212420,9286276,9327748,11033732,11075204,11116676,11158148,10143876" send="1" osc_target="0" osc_trigger="1" osc_message="/VFaders/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="ary=" value="10118788,10549380,10598020,10646660,10160260,10208900,10257540,10306180,10354820,10403460,10452100,10500740" send="1" osc_target="0" osc_trigger="1" osc_message="/VFaders/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="reset()" script="decl obj,tmp,i=0;
 
 obj = getfirst(VFaders);
@@ -234,11 +234,9 @@ for (t=0;t<maxTracks;t++) {
 }
 
 if (!stillPressed) {
-	restartTrackColorAnimation();
 	updateTrackColors();
 }" trigger_script="" trigger_type="4" trigger="1" osc_message="/VFaders/sliderReleased" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="sliderTouched(i)" script="pauseTrackColorAnimation();
-decl t;
+<SCRIPT name="sliderTouched(i)" script="decl t;
 decl colors = fill(1,emptyPadColor,maxTracks);
 
 for (t=0;t<maxTracks;t++) {
@@ -641,7 +639,7 @@ setattribute(Vol,'color',getattribute(Controls,'color'));" trigger_script="z" tr
 </WINDOW>
 <VARIABLE name="i=" value="3" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P3/i" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,17856,75" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
-<VARIABLE name="ary=" value="11248772,11250820,9055364,8964740" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="ary=" value="10800772,11097220,11178116,11259012" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="slidersTouched=" value="0,0,0,0" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/slidersTouched" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="27999,29541,24947" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="reset()" script="slidersTouched = fill(1,0,numStores);
 
@@ -663,14 +661,11 @@ while(obj)
 }" trigger_script="" trigger_type="4" trigger="1" osc_message="/Presets/Controls/reset" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="playPreset(i)" script="putTracksInState(Presets.getSelection(i),3);" trigger_script="" trigger_type="4" trigger="1" osc_message="/Presets/Controls/playPreset" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="stopPreset(i)" script="putTracksInState(Presets.getSelection(i),2);" trigger_script="" trigger_type="4" trigger="1" osc_message="/Presets/Controls/stopPreset" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="sliderTouched(i)" script="pauseTrackColorAnimation();
-
-slidersTouched[i] = 1;
+<SCRIPT name="sliderTouched(i)" script="slidersTouched[i] = 1;
 colorTracks();" trigger_script="" trigger_type="4" trigger="1" osc_message="/Presets/Controls/sliderTouched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="sliderReleased(i)" script="slidersTouched[i] = 0;
 
 if (!sumof(slidersTouched)) {
-	restartTrackColorAnimation();
 	updateTrackColors();
 } else {
 	colorTracks();
