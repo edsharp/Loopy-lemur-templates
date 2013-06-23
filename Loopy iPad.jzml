@@ -59,7 +59,7 @@ for (i=0;i<maxTracks;i++) {
 x = sumof(selectedTracks) ? pans : 0.5;" trigger_script="" trigger_type="4" trigger="1" osc_message="/RelPan/setToAverage" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
 <WINDOW class="Container" text="VFaders" x="409" y="-14" width="621" height="150" id="25" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" tabbar="1" meta="0">
-<WINDOW class="MultiSlider" text="MultiSlider1" x="0" y="0" width="55" height="130" id="1" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bipolar="0" capture="1" color="7995519" gradient="1" grid="0" grid_steps="1" horizontal="0" label="0" multicolor="0" nbr="1" physic="0">
+<WINDOW class="MultiSlider" text="MultiSlider1" x="0" y="0" width="55" height="130" id="1" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bipolar="0" capture="1" color="8338688" gradient="1" grid="0" grid_steps="1" horizontal="0" label="0" multicolor="0" nbr="1" physic="0">
 <PARAM name="x=" value="0.500000" send="17" osc_target="0" osc_trigger="1" osc_message="/VFaders/MultiSlider1/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <PARAM name="z=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/VFaders/MultiSlider1/z" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="tension=0.2" send="0" osc_target="0" osc_trigger="1" osc_message="/VFaders/MultiSlider1/tension" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
@@ -203,7 +203,7 @@ x = sumof(selectedTracks) ? pans : 0.5;" trigger_script="" trigger_type="4" trig
 <SCRIPT name="touched()" script="sliderTouched(i);" trigger_script="z" trigger_type="0" trigger="2" osc_message="/VFaders/MultiSlider12/touched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="released()" script="sliderReleased();" trigger_script="z" trigger_type="0" trigger="3" osc_message="/VFaders/MultiSlider12/released" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
-<VARIABLE name="ary=" value="34892932,29131396,28314244,28355716,29558916,29463684,28639364,28416132,28521092,28015748,26700420,26741892" send="1" osc_target="0" osc_trigger="1" osc_message="/VFaders/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="ary=" value="11261572,10189956,10236036,10284676,11212420,9286276,9327748,11033732,11075204,11116676,11158148,10143876" send="1" osc_target="0" osc_trigger="1" osc_message="/VFaders/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="reset()" script="decl obj,tmp,i=0;
 
 obj = getfirst(VFaders);
@@ -296,14 +296,7 @@ x = 0;" trigger_script="" trigger_type="4" trigger="1" osc_message="/Mute/reset"
 </WINDOW>
 <WINDOW class="CustomButton" text="Record" x="0" y="584" width="140" height="140" id="3" state="241" group="0" font="tahoma,8,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="3,3" capture="1" color="5636096,8328968" label_off="Record" label_on="Record" outline="1">
 <PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Record/x" midi_target="-1" midi_trigger="2" midi_message="0x90,0x90,23,23" midi_scale="16383,0" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="light=-.5" send="0" osc_target="0" osc_trigger="1" osc_message="/Record/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<SCRIPT name="update()" script="if (canRecord() || (recordingTrack < maxTracks)) {
-	Record.light = 0;
-} else {
-	Record.light = -.8;
-	if (nextAction=='record')
-		setNextAction('');
-}" trigger_script="" trigger_type="4" trigger="1" osc_message="/Record/update" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Record/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="touched()" script="if (!isRecording()) {
 	if (!canRecord()) return;
 
@@ -478,9 +471,7 @@ RelPan.setToAverage();
 
 Presets.updateSelection();
 
-updateTrackColors();
-
-Record.update();" trigger_script="x" trigger_type="0" trigger="2" osc_message="/Tracks/updateLastTouched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+updateTrackColors();" trigger_script="x" trigger_type="0" trigger="2" osc_message="/Tracks/updateLastTouched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
 <WINDOW class="Container" text="Presets" x="-6" y="196" width="442" height="401" id="30" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" tabbar="1" meta="0">
 <WINDOW class="Switches" text="Selector" x="0" y="0" width="426" height="94" id="26" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" color="865343,1596013" column="4" label="2" multicolor="0" multilabel="0" paint="0" radio="1" row="1">
@@ -650,7 +641,7 @@ setattribute(Vol,'color',getattribute(Controls,'color'));" trigger_script="z" tr
 </WINDOW>
 <VARIABLE name="i=" value="3" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P3/i" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,17856,75" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
-<VARIABLE name="ary=" value="27269252,27316356,26778244,26629764" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="ary=" value="11248772,11250820,9055364,8964740" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="slidersTouched=" value="0,0,0,0" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/slidersTouched" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="27999,29541,24947" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="reset()" script="slidersTouched = fill(1,0,numStores);
 
@@ -808,7 +799,7 @@ BeatLeds.value = values;
 <VARIABLE name="speed=1" send="0" osc_target="0" osc_trigger="1" osc_message="/SelectTimeout/speed" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
 <WINDOW class="CustomButton" text="Metronome2" x="217" y="174" width="140" height="97" id="24" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="0,0" capture="1" color="8355711,8328968" label_off="Metronome" label_on="Metronome" outline="1">
-<PARAM name="x=" value="1.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Metronome2/x" midi_target="0" midi_trigger="1" midi_message="0x90,0x90,29,29" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Metronome2/x" midi_target="0" midi_trigger="1" midi_message="0x90,0x90,29,29" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Metronome2/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
 <WINDOW class="Monitor" text="NextActionMon" x="193" y="288" width="198" height="60" id="31" state="241" group="0" font="tahoma,18,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" precision="3" unit="" value="1">
@@ -829,18 +820,17 @@ BeatLeds.value = values;
 <VARIABLE name="emptyPadColor=RGB(0.2, 0.2, 0.2)" send="1" osc_target="0" osc_trigger="1" osc_message="/emptyPadColor" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="firstEmpty=" value="0" send="1" osc_target="0" osc_trigger="1" osc_message="/firstEmpty" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="17,1,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="recordingTrack=" value="12" send="1" osc_target="0" osc_trigger="1" osc_message="/recordingTrack" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="nextAction=" value="0" send="1" osc_target="0" osc_trigger="1" osc_message="/nextAction" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="17,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="nextAction=" value="0.000000" send="1" osc_target="0" osc_trigger="1" osc_message="/nextAction" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="17,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="muteRecorded=0" send="1" osc_target="0" osc_trigger="1" osc_message="/muteRecorded" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="lastTrackColorUpdate=" value="8893.620117" send="1" osc_target="0" osc_trigger="1" osc_message="/lastTrackColorUpdate" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="colPlayS=RGB(0, 1, 0)" send="1" osc_target="0" osc_trigger="1" osc_message="/colPlayS" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="26889,8294,28200" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="colPlay=RGB(0, 0.4, 0)" send="1" osc_target="0" osc_trigger="1" osc_message="/colPlay" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="colStopS=HSV(0.6, 1, 1)" send="1" osc_target="0" osc_trigger="1" osc_message="/colStopS" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="-74,17856,75" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="colStop=RGB(0, 0, 0.5)" send="1" osc_target="0" osc_trigger="1" osc_message="/colStop" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="colRecS=RGB(1, 0, 0)" send="1" osc_target="0" osc_trigger="1" osc_message="/colRecS" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,25264,17" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="colRec=RGB(0.5, 0, 0)" send="1" osc_target="0" osc_trigger="1" osc_message="/colRec" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="colEmptyS=HSV(0.83, 1, 1)" send="1" osc_target="0" osc_trigger="1" osc_message="/colEmptyS" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="trackColorOverrides=" value="0" send="1" osc_target="0" osc_trigger="1" osc_message="/trackColorOverrides" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<SCRIPT name="updateTrackColors()" script="decl alt = (time % 1) < 0.5;
+<VARIABLE name="colEmptyS=HSV(0.083, 1, 1)" send="1" osc_target="0" osc_trigger="1" osc_message="/colEmptyS" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="trackColorOverrides=" value="0.000000" send="1" osc_target="0" osc_trigger="1" osc_message="/trackColorOverrides" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<SCRIPT name="updateTrackColors()" script="decl alt = 1;
 decl labels = fill(1,'',maxTracks);
 
 decl colors = fill(1,emptyPadColor,maxTracks);
@@ -864,7 +854,7 @@ for(i=0; i<maxTracks; i++) {
 			}
 
 			if ((nextAction=='record') && (sumof(selectedTracks)==1)) {
-				labels[i] = 'Will record';
+				labels[i] = 'Will overdub';
 				if (alt) colors[i] = colRecS;
 			}
 
@@ -888,6 +878,11 @@ for(i=0; i<maxTracks; i++) {
 			if ((nextAction=='mute') || (nextAction=='toggleAndRecord') || (nextAction=='togglePlayRec') || (nextAction=='toggleStopRec')) {
 				labels[i] = 'Will play';
 				if (alt) colors[i] = colPlayS;
+			}
+
+			if ((nextAction=='record') && (sumof(selectedTracks)==1)) {
+				labels[i] = 'Will overdub';
+				if (alt) colors[i] = colRecS;
 			}
 
 			if (nextAction=='clearTracks') {
@@ -1008,7 +1003,10 @@ trackPans[track]=pan;" trigger_script="" trigger_type="4" trigger="1" osc_messag
 		recordSelectedTrack();
 	}
 } else {
-	if (!canRecord()) return;
+	if (!canRecord()) {
+		setNextAction('');
+		return;
+	}
 
 	if (Mute.x) {
 		Mute.reset();
@@ -1060,7 +1058,6 @@ clearSelection();
 selectedTracks[0] = 1;
 Presets.reset(); // Must be after clearSelection
 updateTrackColors();
-Record.update();
 " trigger_script="" trigger_type="5" trigger="1" osc_message="/resetSession" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="putTracksInState(tracks, state)" script="if (state < 2) return; // Don't set to record or empty
 
@@ -1099,13 +1096,12 @@ updateTrackColors();" trigger_script="" trigger_type="4" trigger="1" osc_message
 } else {
 	nextAction = 0;
 }" trigger_script="" trigger_type="4" trigger="1" osc_message="/setNextAction" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="clearSelection()" script="setNextAction('');
-Presets.clear();
+<SCRIPT name="clearSelection()" script="Presets.clear();
 selectedTracks = fill(1,0,maxTracks);
 RelVol.setToAverage();
 RelPan.setToAverage();
 updateTrackColors();
-Record.update();" trigger_script="" trigger_type="4" trigger="1" osc_message="/clearSelection" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+" trigger_script="" trigger_type="4" trigger="1" osc_message="/clearSelection" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="averageFor(tracks, values)" script="decl i,total;
 for (i=0;i<maxTracks;i++) {
 	if (!tracks[i]) continue;
@@ -1130,10 +1126,4 @@ if (trackStates[i] > 1) {
 	trackStates[i] = 3;
 	recordingTrack = maxTracks;
 }" trigger_script="" trigger_type="4" trigger="1" osc_message="/muteTrack" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="animateTrackColors()" script="if (time - lastTrackColorUpdate < 0.5) return;
-
-lastTrackColorUpdate = time; 
-updateTrackColors();" trigger_script="" trigger_type="1" trigger="1" osc_message="/animateTrackColors" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="pauseTrackColorAnimation()" script="lastTrackColorUpdate = time + 1000;" trigger_script="" trigger_type="4" trigger="1" osc_message="/pauseTrackColorAnimation" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="restartTrackColorAnimation()" script="lastTrackColorUpdate = time;" trigger_script="" trigger_type="4" trigger="1" osc_message="/restartTrackColorAnimation" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </JZML>
