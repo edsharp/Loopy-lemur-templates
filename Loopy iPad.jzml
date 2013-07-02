@@ -365,12 +365,6 @@ lastTouched = 0;
 <PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Pause/x" midi_target="0" midi_trigger="1" midi_message="0x90,0x90,28,28" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Pause/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
-<WINDOW class="CustomButton" text="Metronome" x="0" y="104" width="140" height="97" id="10" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="0" bitmap="0,0" capture="1" color="8355711,8328968" label_off="Metronome off" label_on="Metronome on" outline="1">
-<PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Metronome/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,29,29" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Metronome/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<SCRIPT name="toggle()" script="noteout(0,29,127,1);
-noteout(0,29,0,1);" trigger_script="x" trigger_type="0" trigger="1" osc_message="/Metronome/toggle" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-</WINDOW>
 <WINDOW class="CustomButton" text="ClearTrack" x="142" y="584" width="140" height="140" id="11" state="241" group="0" font="tahoma,8,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="0" bitmap="14,14" capture="1" color="8355711,8338688" label_off="Clear" label_on="Clear" outline="1">
 <PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/ClearTrack/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,30,30" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/ClearTrack/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
@@ -485,20 +479,10 @@ Presets.updateSelection();
 updateTrackColors();" trigger_script="x" trigger_type="0" trigger="2" osc_message="/Tracks/updateLastTouched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
 <WINDOW class="Container" text="Presets" x="-6" y="196" width="442" height="401" id="30" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" tabbar="1" meta="0">
-<WINDOW class="Switches" text="Selector" x="0" y="0" width="426" height="94" id="26" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" color="865343,1596013" column="4" label="2" multicolor="0" multilabel="0" paint="0" radio="1" row="1">
-<PARAM name="x=" value="1.000000,0.000000,0.000000,0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Presets/Selector/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Selector/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<SCRIPT name="touched()" script="decl i = firstof(x);
-
-selectedTracks = getSelection(i);
-RelPan.setToAverage();
-RelVol.setToAverage();
-updateTrackColors();" trigger_script="x" trigger_type="0" trigger="2" osc_message="/Presets/Selector/touched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-</WINDOW>
-<WINDOW class="Container" text="Controls" x="-18" y="94" width="453" height="300" id="31" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" tabbar="1" meta="0">
+<WINDOW class="Container" text="Controls" x="-18" y="78" width="453" height="300" id="31" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" tabbar="1" meta="0">
 <WINDOW class="Container" text="P0" x="0" y="-10" width="122" height="305" id="30" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" tabbar="1" meta="0">
 <WINDOW class="MultiSlider" text="Vol" x="0" y="-10" width="106" height="192" id="27" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bipolar="0" capture="1" color="1596013" gradient="1" grid="0" grid_steps="1" horizontal="0" label="0" multicolor="0" nbr="1" physic="0">
-<PARAM name="x=" value="0.500000" send="17" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P0/Vol/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<PARAM name="x=" value="nan" send="17" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P0/Vol/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <PARAM name="z=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P0/Vol/z" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="tension=0.2" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P0/Vol/tension" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="friction=0.9" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P0/Vol/friction" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
@@ -523,13 +507,13 @@ setattribute(Vol,'color',touchColor);" trigger_script="z" trigger_type="0" trigg
 <SCRIPT name="released()" script="sliderReleased(i);
 setattribute(Vol,'color',getattribute(Controls,'color'));" trigger_script="z" trigger_type="0" trigger="3" osc_message="/Presets/Controls/P0/Vol/released" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
-<WINDOW class="CustomButton" text="Play" x="0" y="175" width="106" height="52" id="28" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="6,6" capture="1" color="16390,30219" label_off="" label_on="" outline="1">
+<WINDOW class="CustomButton" text="Play" x="0" y="175" width="106" height="60" id="28" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="6,6" capture="1" color="16390,30219" label_off="" label_on="" outline="1">
 <PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P0/Play/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P0/Play/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="released()" script="playPreset(i);" trigger_script="x" trigger_type="0" trigger="3" osc_message="/Presets/Controls/P0/Play/released" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="touched()" script="playTouched(i);" trigger_script="x" trigger_type="0" trigger="2" osc_message="/Presets/Controls/P0/Play/touched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
-<WINDOW class="CustomButton" text="Stop" x="0" y="227" width="106" height="52" id="29" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="1,1" capture="1" color="347,128" label_off="" label_on="" outline="1">
+<WINDOW class="CustomButton" text="Stop" x="0" y="230" width="106" height="60" id="29" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="1,1" capture="1" color="347,128" label_off="" label_on="" outline="1">
 <PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P0/Stop/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P0/Stop/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="released()" script="stopPreset(i);" trigger_script="x" trigger_type="0" trigger="3" osc_message="/Presets/Controls/P0/Stop/released" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
@@ -564,13 +548,13 @@ setattribute(Vol,'color',touchColor);" trigger_script="z" trigger_type="0" trigg
 <SCRIPT name="released()" script="sliderReleased(i);
 setattribute(Vol,'color',getattribute(Controls,'color'));" trigger_script="z" trigger_type="0" trigger="3" osc_message="/Presets/Controls/P1/Vol/released" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
-<WINDOW class="CustomButton" text="Play" x="0" y="175" width="106" height="52" id="28" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="6,6" capture="1" color="16390,30219" label_off="" label_on="" outline="1">
+<WINDOW class="CustomButton" text="Play" x="0" y="175" width="106" height="60" id="28" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="6,6" capture="1" color="16390,30219" label_off="" label_on="" outline="1">
 <PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P1/Play/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P1/Play/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="released()" script="playPreset(i);" trigger_script="x" trigger_type="0" trigger="3" osc_message="/Presets/Controls/P1/Play/released" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="touched()" script="playTouched(i);" trigger_script="x" trigger_type="0" trigger="2" osc_message="/Presets/Controls/P1/Play/touched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
-<WINDOW class="CustomButton" text="Stop" x="0" y="227" width="106" height="52" id="29" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="1,1" capture="1" color="347,128" label_off="" label_on="" outline="1">
+<WINDOW class="CustomButton" text="Stop" x="0" y="230" width="106" height="60" id="29" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="1,1" capture="1" color="347,128" label_off="" label_on="" outline="1">
 <PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P1/Stop/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P1/Stop/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="released()" script="stopPreset(i);" trigger_script="x" trigger_type="0" trigger="3" osc_message="/Presets/Controls/P1/Stop/released" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
@@ -605,13 +589,13 @@ setattribute(Vol,'color',touchColor);" trigger_script="z" trigger_type="0" trigg
 <SCRIPT name="released()" script="sliderReleased(i);
 setattribute(Vol,'color',getattribute(Controls,'color'));" trigger_script="z" trigger_type="0" trigger="3" osc_message="/Presets/Controls/P2/Vol/released" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
-<WINDOW class="CustomButton" text="Play" x="0" y="175" width="106" height="52" id="28" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="6,6" capture="1" color="16390,30219" label_off="" label_on="" outline="1">
+<WINDOW class="CustomButton" text="Play" x="0" y="175" width="106" height="60" id="28" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="6,6" capture="1" color="16390,30219" label_off="" label_on="" outline="1">
 <PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P2/Play/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P2/Play/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="released()" script="playPreset(i);" trigger_script="x" trigger_type="0" trigger="3" osc_message="/Presets/Controls/P2/Play/released" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="touched()" script="playTouched(i);" trigger_script="x" trigger_type="0" trigger="2" osc_message="/Presets/Controls/P2/Play/touched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
-<WINDOW class="CustomButton" text="Stop" x="0" y="227" width="106" height="52" id="29" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="1,1" capture="1" color="347,128" label_off="" label_on="" outline="1">
+<WINDOW class="CustomButton" text="Stop" x="0" y="230" width="106" height="60" id="29" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="1,1" capture="1" color="347,128" label_off="" label_on="" outline="1">
 <PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P2/Stop/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P2/Stop/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="released()" script="stopPreset(i);" trigger_script="x" trigger_type="0" trigger="3" osc_message="/Presets/Controls/P2/Stop/released" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
@@ -646,13 +630,13 @@ setattribute(Vol,'color',touchColor);" trigger_script="z" trigger_type="0" trigg
 <SCRIPT name="released()" script="sliderReleased(i);
 setattribute(Vol,'color',getattribute(Controls,'color'));" trigger_script="z" trigger_type="0" trigger="3" osc_message="/Presets/Controls/P3/Vol/released" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
-<WINDOW class="CustomButton" text="Play" x="0" y="175" width="106" height="52" id="28" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="6,6" capture="1" color="16390,30219" label_off="" label_on="" outline="1">
+<WINDOW class="CustomButton" text="Play" x="0" y="175" width="106" height="60" id="28" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="6,6" capture="1" color="16390,30219" label_off="" label_on="" outline="1">
 <PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P3/Play/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P3/Play/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="released()" script="playPreset(i);" trigger_script="x" trigger_type="0" trigger="3" osc_message="/Presets/Controls/P3/Play/released" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="touched()" script="playTouched(i);" trigger_script="x" trigger_type="0" trigger="2" osc_message="/Presets/Controls/P3/Play/touched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
-<WINDOW class="CustomButton" text="Stop" x="0" y="227" width="106" height="52" id="29" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="1,1" capture="1" color="347,128" label_off="" label_on="" outline="1">
+<WINDOW class="CustomButton" text="Stop" x="0" y="230" width="106" height="60" id="29" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="1,1" capture="1" color="347,128" label_off="" label_on="" outline="1">
 <PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P3/Stop/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P3/Stop/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="released()" script="stopPreset(i);" trigger_script="x" trigger_type="0" trigger="3" osc_message="/Presets/Controls/P3/Stop/released" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
@@ -660,7 +644,7 @@ setattribute(Vol,'color',getattribute(Controls,'color'));" trigger_script="z" tr
 </WINDOW>
 <VARIABLE name="i=" value="3" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P3/i" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,17856,75" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
-<VARIABLE name="ary=" value="11951236,11952772,12360836,12459140" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="ary=" value="30638212,31619716,30636676,31576708" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="slidersTouched=" value="0,0,0,0" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/slidersTouched" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="27999,29541,24947" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="reset()" script="slidersTouched = fill(1,0,numStores);
 
@@ -711,26 +695,39 @@ setattribute(Tracks,'colors',colors);" trigger_script="" trigger_type="4" trigge
 <SCRIPT name="playTouched(i)" script="_updTrks(getSelection(i),'play');" trigger_script="" trigger_type="4" trigger="1" osc_message="/Presets/Controls/playTouched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="stopTouched(i)" script="_updTrks(getSelection(i),'stop');" trigger_script="" trigger_type="4" trigger="1" osc_message="/Presets/Controls/stopTouched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
+<WINDOW class="Pads" text="Selector" x="0" y="0" width="426" height="81" id="32" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" color="865343,1596013" column="4" label="2" multicolor="0" multilabel="0" row="1">
+<PARAM name="x=" value="0.000000,0.000000,0.000000,0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Presets/Selector/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="attack=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Selector/attack" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="decay=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Selector/decay" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="sustain=1" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Selector/sustain" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="release=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Selector/release" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="hold=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Selector/hold" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Selector/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<SCRIPT name="touched()" script="showSelected();" trigger_script="x" trigger_type="0" trigger="1" osc_message="/Presets/Selector/touched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+</WINDOW>
 <VARIABLE name="numStores=4" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/numStores" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="17,7,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="storedSelections=" value="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/storedSelections" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<SCRIPT name="clear()" script="Selector.x = fill(1,0,numStores);" trigger_script="" trigger_type="4" trigger="1" osc_message="/Presets/clear" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<VARIABLE name="storedSelections=" value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/storedSelections" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="getSelection(i)" script="return subarray(storedSelections,maxTracks*i,maxTracks);
 " trigger_script="" trigger_type="4" trigger="1" osc_message="/Presets/getSelection" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="setSelection(i)" script="storedSelections = replace(storedSelections,selectedTracks,i*maxTracks);" trigger_script="" trigger_type="4" trigger="1" osc_message="/Presets/setSelection" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="reset()" script="Controls.reset();
-
-Selector.x = fill(1,0,numStores);
-Selector.x[0] = 1;
+<SCRIPT name="reset()" script="PreLeds.reset();
+Controls.reset();
 
 storedSelections = fill(1,0,numStores * maxTracks);
-storedSelections[0] = 1;
 
 setAverageVolumes();" trigger_script="" trigger_type="4" trigger="1" osc_message="/Presets/reset" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="updateSelection()" script="decl i = firstof(Selector.x);
+<SCRIPT name="updateSelection()" script="decl i,j,tmp;
 
-if (i == numStores) return;
-
-setSelection(i);
+for (i=0;i<numStores;i++) {
+	if (Selector.x[i]) {
+		setSelection(i);
+	}
+	for (j=0;j<maxTracks;j++) {
+		tmp = getexpression(PreLeds.ary[j],'value');
+		tmp[i] = storedSelections[j+i*maxTracks];
+		setexpression(PreLeds.ary[j],'value',tmp);
+	}
+}
 
 setAverageVolumes();" trigger_script="" trigger_type="4" trigger="1" osc_message="/Presets/updateSelection" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="setAverageVolumes()" script="if (!Controls.P0.Vol.z) Controls.P0.Vol.x = averageFor(getSelection(0),trackVolumes);
@@ -738,12 +735,89 @@ if (!Controls.P1.Vol.z) Controls.P1.Vol.x = averageFor(getSelection(1),trackVolu
 if (!Controls.P2.Vol.z) Controls.P2.Vol.x = averageFor(getSelection(2),trackVolumes);
 if (!Controls.P3.Vol.z) Controls.P3.Vol.x = averageFor(getSelection(3),trackVolumes);
 " trigger_script="" trigger_type="4" trigger="1" osc_message="/Presets/setAverageVolumes" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="showSelected()" script="decl i;
+selectedTracks = fill(1,0,maxTracks);
+for (i=0;i<numStores;i++) {
+	if (Selector.x[i] == 0) continue;
+	selectedTracks = selectedTracks || getSelection(i);
+}
+RelPan.setToAverage();
+RelVol.setToAverage();
+updateTrackColors();" trigger_script="" trigger_type="4" trigger="1" osc_message="/Presets/showSelected" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
 <WINDOW class="Text" text="ClearReally" x="181" y="627" width="80" height="48" id="31" state="228" group="0" font="tahoma,24,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="8338688" content="?">
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/ClearReally/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
 <WINDOW class="Text" text="ResetSessionReally" x="161" y="25" width="95" height="48" id="32" state="228" group="0" font="tahoma,24,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="8338688" content="?">
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/ResetSessionReally/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Container" text="PreLeds" x="507" y="123" width="390" height="552" id="34" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" tabbar="1" meta="0">
+<WINDOW class="Leds" text="Leds0" x="23" y="75" width="68" height="32" id="33" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bargraph="0" color="1707391,8355711" column="4" label="0" multicolor="0" row="1">
+<VARIABLE name="value=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds0/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds0/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Leds" text="Leds1" x="153" y="75" width="68" height="32" id="34" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bargraph="0" color="1707391,8355711" column="4" label="0" multicolor="0" row="1">
+<VARIABLE name="value=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds1/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds1/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Leds" text="Leds2" x="153" y="212" width="68" height="32" id="35" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bargraph="0" color="1707391,8355711" column="4" label="0" multicolor="0" row="1">
+<VARIABLE name="value=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds2/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds2/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Leds" text="Leds3" x="283" y="212" width="68" height="32" id="36" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bargraph="0" color="1707391,8355711" column="4" label="0" multicolor="0" row="1">
+<VARIABLE name="value=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds3/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds3/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Leds" text="Leds4" x="23" y="349" width="68" height="32" id="37" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bargraph="0" color="1707391,8355711" column="4" label="0" multicolor="0" row="1">
+<VARIABLE name="value=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds4/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds4/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Leds" text="Leds5" x="153" y="349" width="68" height="32" id="38" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bargraph="0" color="1707391,8355711" column="4" label="0" multicolor="0" row="1">
+<VARIABLE name="value=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds5/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds5/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Leds" text="Leds6" x="283" y="349" width="68" height="32" id="39" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bargraph="0" color="1707391,8355711" column="4" label="0" multicolor="0" row="1">
+<VARIABLE name="value=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds6/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds6/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Leds" text="Leds7" x="23" y="486" width="68" height="32" id="40" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bargraph="0" color="1707391,8355711" column="4" label="0" multicolor="0" row="1">
+<VARIABLE name="value=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds7/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds7/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Leds" text="Leds8" x="153" y="486" width="68" height="32" id="41" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bargraph="0" color="1707391,8355711" column="4" label="0" multicolor="0" row="1">
+<VARIABLE name="value=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds8/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds8/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Leds" text="Leds9" x="283" y="486" width="68" height="32" id="42" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bargraph="0" color="1707391,8355711" column="4" label="0" multicolor="0" row="1">
+<VARIABLE name="value=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds9/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds9/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Leds" text="Leds10" x="283" y="75" width="68" height="32" id="43" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bargraph="0" color="1707391,8355711" column="4" label="0" multicolor="0" row="1">
+<VARIABLE name="value=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds10/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds10/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="Leds" text="Leds11" x="23" y="212" width="68" height="32" id="44" state="5" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" bargraph="0" color="1707391,8355711" column="4" label="0" multicolor="0" row="1">
+<VARIABLE name="value=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds11/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds11/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<VARIABLE name="ary=" value="30995076,31199876,31031940,12425348,31210628,31190148,30046340,31216772,30140036,30988932,31621252,31662724" send="1" osc_target="0" osc_trigger="1" osc_message="/PreLeds/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<SCRIPT name="reset()" script="decl obj,tmp,i=0;
+
+obj = getfirst(PreLeds);
+while(obj)
+{
+	tmp=getobjectrect(obj);
+	tmp[0]= (i%3) * 130 + 23;
+	tmp[1]= floor(i/3) * 137 + 75;
+	//tmp[2]= faderWidth;
+	//tmp[3]= faderHeight;
+	setattribute(obj,'rect',tmp);
+	setexpression(obj,'i',i);
+	ary[i] = obj;
+	setexpression(obj,'value',fill(1,0,4));
+	i++;
+	obj=getnext(obj);
+}" trigger_script="" trigger_type="4" trigger="1" osc_message="/PreLeds/reset" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
 </WINDOW>
 <WINDOW class="JAZZINTERFACE" text="2 Debug" x="0" y="0" width="1024" height="724" id="1" state="0" group="0" font="tahoma,11,0" >
@@ -816,12 +890,18 @@ BeatLeds.value = values;
 <VARIABLE name="friction=0.9" send="0" osc_target="0" osc_trigger="1" osc_message="/SelectTimeout/friction" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="speed=1" send="0" osc_target="0" osc_trigger="1" osc_message="/SelectTimeout/speed" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
-<WINDOW class="CustomButton" text="Metronome2" x="217" y="174" width="140" height="97" id="24" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="0,0" capture="1" color="8355711,8328968" label_off="Metronome" label_on="Metronome" outline="1">
+<WINDOW class="CustomButton" text="Metronome2" x="300" y="181" width="140" height="97" id="24" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="1" bitmap="0,0" capture="1" color="8355711,8328968" label_off="Metronome" label_on="Metronome" outline="1">
 <PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Metronome2/x" midi_target="0" midi_trigger="1" midi_message="0x90,0x90,29,29" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Metronome2/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
 <WINDOW class="Monitor" text="NextActionMon" x="193" y="288" width="198" height="60" id="31" state="241" group="0" font="tahoma,18,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" precision="3" unit="" value="1">
 <VARIABLE name="value=nextAction" send="0" osc_target="0" osc_trigger="1" osc_message="/NextActionMon/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+</WINDOW>
+<WINDOW class="CustomButton" text="Metronome" x="166" y="133" width="140" height="97" id="32" state="241" group="0" font="tahoma,20,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" behavior="0" bitmap="0,0" capture="1" color="8355711,8328968" label_off="Metronome off" label_on="Metronome on" outline="1">
+<PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Metronome/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,29,29" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Metronome/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<SCRIPT name="toggle()" script="noteout(0,29,127,1);
+noteout(0,29,0,1);" trigger_script="x" trigger_type="0" trigger="1" osc_message="/Metronome/toggle" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
 </WINDOW>
 <VARIABLE name="trackStates=" value="0,0,0,0,0,0,0,0,0,0,0,0" send="1" osc_target="0" osc_trigger="1" osc_message="/trackStates" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
@@ -987,8 +1067,7 @@ updateTrackColors();" trigger_script="" trigger_type="4" trigger="1" osc_message
 } else {
 	nextAction = 0;
 }" trigger_script="" trigger_type="4" trigger="1" osc_message="/setNextAction" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="clearSelection()" script="Presets.clear();
-selectedTracks = fill(1,0,maxTracks);
+<SCRIPT name="clearSelection()" script="selectedTracks = fill(1,0,maxTracks);
 RelVol.setToAverage();
 RelPan.setToAverage();
 updateTrackColors();
