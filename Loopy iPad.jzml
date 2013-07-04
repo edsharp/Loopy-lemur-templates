@@ -440,7 +440,7 @@ x = vols;" trigger_script="" trigger_type="4" trigger="1" osc_message="/RelVol/s
 <VARIABLE name="hold=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Tracks/hold" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Tracks/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="lastXs=" value="0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000" send="1" osc_target="0" osc_trigger="1" osc_message="/Tracks/lastXs" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="17,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="releaseTime=" value="424.703644" send="1" osc_target="0" osc_trigger="1" osc_message="/Tracks/releaseTime" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="releaseTime=" value="22.007879" send="1" osc_target="0" osc_trigger="1" osc_message="/Tracks/releaseTime" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="selectTimeout=SelectTimeout.x*.5" send="1" osc_target="0" osc_trigger="1" osc_message="/Tracks/selectTimeout" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="17,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="updateSelectedTrack()" script="decl i;
 for (i=0;i<maxTracks;i++) {
@@ -644,7 +644,7 @@ setattribute(Vol,'color',getattribute(Controls,'color'));" trigger_script="z" tr
 </WINDOW>
 <VARIABLE name="i=" value="3" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P3/i" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,17856,75" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
-<VARIABLE name="ary=" value="30638212,31619716,30636676,31576708" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="ary=" value="10837636,10847876,11223172,11321476" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="slidersTouched=" value="0,0,0,0" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/slidersTouched" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="27999,29541,24947" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="reset()" script="slidersTouched = fill(1,0,numStores);
 
@@ -703,7 +703,12 @@ setattribute(Tracks,'colors',colors);" trigger_script="" trigger_type="4" trigge
 <VARIABLE name="release=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Selector/release" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="hold=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Selector/hold" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Presets/Selector/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<SCRIPT name="touched()" script="showSelected();" trigger_script="x" trigger_type="0" trigger="1" osc_message="/Presets/Selector/touched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="touched()" script="if (Tracks.x) {
+	updateSelection();
+} else {
+	showSelected();
+}
+" trigger_script="x" trigger_type="0" trigger="1" osc_message="/Presets/Selector/touched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
 <VARIABLE name="numStores=4" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/numStores" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="17,7,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="storedSelections=" value="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/storedSelections" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
@@ -800,7 +805,7 @@ updateTrackColors();" trigger_script="" trigger_type="4" trigger="1" osc_message
 <VARIABLE name="value=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds11/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds11/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
-<VARIABLE name="ary=" value="30995076,31199876,31031940,12425348,31210628,31190148,30046340,31216772,30140036,30988932,31621252,31662724" send="1" osc_target="0" osc_trigger="1" osc_message="/PreLeds/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="ary=" value="36590724,37342340,37398660,37404804,37348484,37354628,37361796,37367940,37374084,37380228,37386372,37392516" send="1" osc_target="0" osc_trigger="1" osc_message="/PreLeds/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="reset()" script="decl obj,tmp,i=0;
 
 obj = getfirst(PreLeds);
@@ -957,6 +962,10 @@ for (i=0;i<maxTracks;i++) {
 	}
 }
 
+if (action == 'clear') {
+	RelVol.setToAverage();
+	Presets.setAverageVolumes();
+}
 setNextAction('');
 updateTrackColors();" trigger_script="" trigger_type="4" trigger="1" osc_message="/toSelectedTracks" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="setTrackVolume(track, vol)" script="ctlout(0,31+track,xToVol(vol),1);
@@ -1068,10 +1077,14 @@ updateTrackColors();" trigger_script="" trigger_type="4" trigger="1" osc_message
 	nextAction = 0;
 }" trigger_script="" trigger_type="4" trigger="1" osc_message="/setNextAction" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="clearSelection()" script="selectedTracks = fill(1,0,maxTracks);
+
+if (Presets.Selector.x) {
+	Presets.updateSelection();
+}
+
 RelVol.setToAverage();
 RelPan.setToAverage();
-updateTrackColors();
-" trigger_script="" trigger_type="4" trigger="1" osc_message="/clearSelection" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+updateTrackColors();" trigger_script="" trigger_type="4" trigger="1" osc_message="/clearSelection" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="averageFor(tracks, values)" script="decl i,total;
 for (i=0;i<maxTracks;i++) {
 	if (!tracks[i]) continue;
