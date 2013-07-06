@@ -869,10 +869,10 @@ DynaBall.newBalls = lastXs;" trigger_script="" trigger_type="4" trigger="1" osc_
 <SCRIPT name="reset()" script="lastXs = fill(1,0,maxTracks);
 x = fill(1,0,maxTracks);" trigger_script="" trigger_type="4" trigger="1" osc_message="/Dynamo1/SelectedTracks/reset" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
-<WINDOW class="Fader" text="VolTarget" x="434" y="52" width="60" height="266" id="2" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" color="1596013" cursor="0" grid="0" grid_steps="5" label="0" physic="1" precision="3" unit="" value="0" zoom="1.000000">
-<PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Dynamo1/VolTarget/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<WINDOW class="Fader" text="VolTarget" x="434" y="52" width="60" height="266" id="2" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" color="1596013" cursor="0" grid="0" grid_steps="5" label="0" physic="1" precision="1" unit="" value="1" zoom="1.000000">
+<PARAM name="x=" value="0.666667" send="17" osc_target="0" osc_trigger="1" osc_message="/Dynamo1/VolTarget/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <PARAM name="z=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Dynamo1/VolTarget/z" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="value=" value="0.500000" send="0" osc_target="0" osc_trigger="1" osc_message="/Dynamo1/VolTarget/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="value=x*1.5" send="0" osc_target="0" osc_trigger="1" osc_message="/Dynamo1/VolTarget/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="attraction=1" send="0" osc_target="0" osc_trigger="1" osc_message="/Dynamo1/VolTarget/attraction" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="friction=0.9" send="0" osc_target="0" osc_trigger="1" osc_message="/Dynamo1/VolTarget/friction" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="speed=1" send="0" osc_target="0" osc_trigger="1" osc_message="/Dynamo1/VolTarget/speed" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
@@ -928,18 +928,7 @@ for (i=0;i<maxTracks;i++) {
 }
 
 oldBalls = newBalls;" trigger_script="" trigger_type="1" trigger="1" osc_message="/Dynamo1/DynaBall/frame" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="updateTracks()" script="decl i,ball=0,volScale=1;
-
-if (ConstVol.x && ApplyVol.x) {
-	decl volTotal=0;
-	for (i=0;i<maxTracks;i++) {
-		if (!SelectedTracks.x[i]) continue;			
-
-		volTotal += DynaBall.y[ball];
-		ball++;
-	}
-	volScale = VolTarget.x*1.5/volTotal;
-}
+<SCRIPT name="updateTracks()" script="decl i,ball=0,volScale=1,preScaleVols=fill(1,0,maxTracks);
 
 volScale = volScale*(VolRange.x[1]-VolRange.x[0]);
 
@@ -953,7 +942,28 @@ for (i=0;i<maxTracks;i++) {
 	}
 
 	if (ApplyPan.x) setTrackPan(i,PanRange.x[0] + DynaBall.x[ball] * (PanRange.x[1] - PanRange.x[0]));
-	if (ApplyVol.x) setTrackVolume(i,clamp(DynaBall.y[ball]*volScale+VolRange.x[0],0,1));
+	if (ApplyVol.x) preScaleVols[i] = DynaBall.y[ball]*volScale+VolRange.x[0];
+
+	ball++;
+}
+
+if (!ApplyVol.x) return;
+
+if (ConstVol.x) {
+	decl volTotal=sumof(preScaleVols);
+	volScale = VolTarget.x*1.5/volTotal;
+}
+
+ball=0;
+for (i=0;i<maxTracks;i++) {
+	if (!SelectedTracks.x[i]) continue;
+
+	if (trackStates[i] != 3) {
+		ball++;
+		continue;
+	}
+
+	setTrackVolume(i,clamp(preScaleVols[i]*volScale,0,1));
 
 	ball++;
 }" trigger_script="" trigger_type="4" trigger="1" osc_message="/Dynamo1/DynaBall/updateTracks" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
@@ -990,7 +1000,8 @@ for (i=0;i<maxTracks;i++) {
 ApplyPan.x = 0;
 ApplyVol.x = 0;
 PanRange.x = {0,1};
-VolRange.x = {0,0.9};" trigger_script="" trigger_type="4" trigger="1" osc_message="/Dynamo1/reset" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+VolRange.x = {0,0.9};
+VolTarget.x = 1/1.5;" trigger_script="" trigger_type="4" trigger="1" osc_message="/Dynamo1/reset" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
 <WINDOW class="Container" text="Dynamo2" x="512" y="0" width="512" height="724" id="10" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" tabbar="1" meta="0">
 <WINDOW class="Pads" text="SelectedTracks" x="0" y="0" width="248" height="318" id="1" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" color="865343,1596013" column="3" label="1" multicolor="0" multilabel="1" row="4">
@@ -1034,10 +1045,10 @@ DynaBall.newBalls = lastXs;" trigger_script="" trigger_type="4" trigger="1" osc_
 <SCRIPT name="reset()" script="lastXs = fill(1,0,maxTracks);
 x = fill(1,0,maxTracks);" trigger_script="" trigger_type="4" trigger="1" osc_message="/Dynamo2/SelectedTracks/reset" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
-<WINDOW class="Fader" text="VolTarget" x="434" y="52" width="60" height="266" id="2" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" color="1596013" cursor="0" grid="0" grid_steps="5" label="0" physic="1" precision="3" unit="" value="0" zoom="1.000000">
-<PARAM name="x=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Dynamo2/VolTarget/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<WINDOW class="Fader" text="VolTarget" x="434" y="52" width="60" height="266" id="2" state="1" group="0" font="tahoma,10,0" send="1" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" color="1596013" cursor="0" grid="0" grid_steps="5" label="0" physic="1" precision="1" unit="" value="1" zoom="1.000000">
+<PARAM name="x=" value="0.666667" send="17" osc_target="0" osc_trigger="1" osc_message="/Dynamo2/VolTarget/x" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <PARAM name="z=" value="0.000000" send="17" osc_target="0" osc_trigger="1" osc_message="/Dynamo2/VolTarget/z" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" osc_scale="0.000000,1.000000" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="value=" value="0.500000" send="0" osc_target="0" osc_trigger="1" osc_message="/Dynamo2/VolTarget/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="value=x*1.5" send="0" osc_target="0" osc_trigger="1" osc_message="/Dynamo2/VolTarget/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="attraction=1" send="0" osc_target="0" osc_trigger="1" osc_message="/Dynamo2/VolTarget/attraction" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="friction=0.9" send="0" osc_target="0" osc_trigger="1" osc_message="/Dynamo2/VolTarget/friction" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="speed=1" send="0" osc_target="0" osc_trigger="1" osc_message="/Dynamo2/VolTarget/speed" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
@@ -1093,18 +1104,7 @@ for (i=0;i<maxTracks;i++) {
 }
 
 oldBalls = newBalls;" trigger_script="" trigger_type="1" trigger="1" osc_message="/Dynamo2/DynaBall/frame" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="updateTracks()" script="decl i,ball=0,volScale=1;
-
-if (ConstVol.x && ApplyVol.x) {
-	decl volTotal=0;
-	for (i=0;i<maxTracks;i++) {
-		if (!SelectedTracks.x[i]) continue;			
-
-		volTotal += DynaBall.y[ball];
-		ball++;
-	}
-	volScale = VolTarget.x*1.5/volTotal;
-}
+<SCRIPT name="updateTracks()" script="decl i,ball=0,volScale=1,preScaleVols=fill(1,0,maxTracks);
 
 volScale = volScale*(VolRange.x[1]-VolRange.x[0]);
 
@@ -1118,7 +1118,28 @@ for (i=0;i<maxTracks;i++) {
 	}
 
 	if (ApplyPan.x) setTrackPan(i,PanRange.x[0] + DynaBall.x[ball] * (PanRange.x[1] - PanRange.x[0]));
-	if (ApplyVol.x) setTrackVolume(i,clamp(DynaBall.y[ball]*volScale+VolRange.x[0],0,1));
+	if (ApplyVol.x) preScaleVols[i] = DynaBall.y[ball]*volScale+VolRange.x[0];
+
+	ball++;
+}
+
+if (!ApplyVol.x) return;
+
+if (ConstVol.x) {
+	decl volTotal=sumof(preScaleVols);
+	volScale = VolTarget.x*1.5/volTotal;
+}
+
+ball=0;
+for (i=0;i<maxTracks;i++) {
+	if (!SelectedTracks.x[i]) continue;
+
+	if (trackStates[i] != 3) {
+		ball++;
+		continue;
+	}
+
+	setTrackVolume(i,clamp(preScaleVols[i]*volScale,0,1));
 
 	ball++;
 }" trigger_script="" trigger_type="4" trigger="1" osc_message="/Dynamo2/DynaBall/updateTracks" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
@@ -1155,7 +1176,8 @@ for (i=0;i<maxTracks;i++) {
 ApplyPan.x = 0;
 ApplyVol.x = 0;
 PanRange.x = {0,1};
-VolRange.x = {0,0.9};" trigger_script="" trigger_type="4" trigger="1" osc_message="/Dynamo2/reset" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+VolRange.x = {0,0.9};
+VolTarget.x = 1/1.5;" trigger_script="" trigger_type="4" trigger="1" osc_message="/Dynamo2/reset" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
 </WINDOW>
 <WINDOW class="JAZZINTERFACE" text="3 Debug" x="0" y="0" width="1024" height="724" id="1" state="0" group="0" font="tahoma,11,0" >
