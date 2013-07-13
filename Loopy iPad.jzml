@@ -943,7 +943,7 @@ ball=0;
 for (i=0;i<maxTracks;i++) {
 	if (!SelectedTracks.x[i]) continue;
 
-	if (trackStates[i] != 3) {
+	if (trackStates[i] != 4) {
 		ball++;
 		continue;
 	}
@@ -967,7 +967,7 @@ ball=0;
 for (i=0;i<maxTracks;i++) {
 	if (!SelectedTracks.x[i]) continue;
 
-	if (trackStates[i] != 3) {
+	if (trackStates[i] != 4) {
 		ball++;
 		continue;
 	}
@@ -1121,7 +1121,7 @@ ball=0;
 for (i=0;i<maxTracks;i++) {
 	if (!SelectedTracks.x[i]) continue;
 
-	if (trackStates[i] != 3) {
+	if (trackStates[i] != 4) {
 		ball++;
 		continue;
 	}
@@ -1145,7 +1145,7 @@ ball=0;
 for (i=0;i<maxTracks;i++) {
 	if (!SelectedTracks.x[i]) continue;
 
-	if (trackStates[i] != 3) {
+	if (trackStates[i] != 4) {
 		ball++;
 		continue;
 	}
@@ -1358,7 +1358,6 @@ if (isRecording()) {
 	if (Tracks.x[recordingTrack]) {
 		// Holding down recording track, so overdub
 		recOverdub();
-		trackStates[recordingTrack] = 2;
 	} else {
 		stopRecording();
 	
