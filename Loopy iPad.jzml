@@ -1620,18 +1620,23 @@ for(i=0; i<maxTracks; i++) {
 setattribute(Tracks,'colors',colors);
 setattribute(Tracks,'labels',labels);
 setattribute(MultiPan,'colors',colors);" trigger_script="" trigger_type="4" trigger="1" osc_message="/_updTrks" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="stopRecording()" script="setSelectedTrack(recordingTrack);
-recordingTrack = maxTracks;
-
-if (muteRecorded) {
-	trackStates[selectedTrack] = 3;
+<SCRIPT name="stopRecording()" script="if (muteRecorded) {
+	setSelectedTrack(recordingTrack);
+	trackStates[recordingTrack] = 3;
 	noteout(0,33,127,1);
 	noteout(0,33,0,1);
 } else {
-	trackStates[selectedTrack] = 4;
-	noteout(0,23,127,1);
-	noteout(0,23,0,1);
+	if (trackStates[recordingTrack] == 1) {
+	noteout(0,46+recordingTrack,127,1); // Toggle record
+	noteout(0,46+recordingTrack,0,1);
+	} else {
+	noteout(0,34+recordingTrack,127,1); // Toggle mute
+	noteout(0,34+recordingTrack,0,1);
+	}
+	trackStates[recordingTrack] = 4; 
 }
+
+recordingTrack = maxTracks;
 
 if (Mute.x) {
 	Mute.reset();
