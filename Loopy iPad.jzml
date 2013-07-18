@@ -203,7 +203,7 @@ x = sumof(selectedTracks) ? pans : 0.5;" trigger_script="" trigger_type="4" trig
 <SCRIPT name="touched()" script="sliderTouched(i);" trigger_script="z" trigger_type="0" trigger="2" osc_message="/VFaders/MultiSlider12/touched" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="released()" script="sliderReleased();" trigger_script="z" trigger_type="0" trigger="3" osc_message="/VFaders/MultiSlider12/released" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
-<VARIABLE name="ary=" value="9492612,9986180,10034820,10083460,9599620,9645700,9694340,9742980,9791620,9840260,9888900,9937540,38129284.000000" send="1" osc_target="0" osc_trigger="1" osc_message="/VFaders/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="ary=" value="12032132,12535940,12584580,12633220,12106884,12148356,12265092,12297860,12343940,12390020,12438660,12487300,38129284.000000" send="1" osc_target="0" osc_trigger="1" osc_message="/VFaders/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="reset()" script="decl obj,tmp,i=0;
 
 obj = getfirst(VFaders);
@@ -462,7 +462,7 @@ for (i=0;i<maxTracks;i++) {
 releaseTime = time;
 
 " trigger_script="x" trigger_type="0" trigger="3" osc_message="/Tracks/updateSelectedTrack" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="updateLastTouched()" script="if ((sumof(lastXs) == 0) && (time > (releaseTime + selectTimeout)) && !nextAction) {
+<SCRIPT name="updateLastTouched()" script="if ((sumof(lastXs) == 0) && (time > (releaseTime + selectTimeout)) && !nextAction && !blockSelReset) {
 	selectedTracks = fill(1,0,maxTracks);
 }
 
@@ -659,7 +659,7 @@ setattribute(Vol,'color',getattribute(Controls,'color'));" trigger_script="activ
 </WINDOW>
 <VARIABLE name="i=" value="3" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/P3/i" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,17856,75" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
-<VARIABLE name="ary=" value="10240644,28031108,28496004,28166276" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="ary=" value="28728452,28452996,28963972,29078148" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="slidersTouched=" value="0,0,0,0" send="1" osc_target="0" osc_trigger="1" osc_message="/Presets/Controls/slidersTouched" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="27999,29541,24947" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="reset()" script="slidersTouched = fill(1,0,numStores);
 
@@ -821,7 +821,7 @@ updateTrackColors();" trigger_script="" trigger_type="4" trigger="1" osc_message
 <VARIABLE name="value=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds11/value" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/PreLeds/Leds11/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
-<VARIABLE name="ary=" value="11136644,11142788,11198084,11204228,11148932,11155076,11161220,11167364,11173508,11179652,11185796,11191940,28116612.000000" send="1" osc_target="0" osc_trigger="1" osc_message="/PreLeds/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="ary=" value="36125316,36168324,36258948,36265092,36174468,36180612,36186756,36192900,36234372,36240516,36246660,36252804,28116612.000000" send="1" osc_target="0" osc_trigger="1" osc_message="/PreLeds/ary" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="reset()" script="decl obj,tmp,i=0;
 
 obj = getfirst(PreLeds);
@@ -1336,6 +1336,7 @@ for (i=0;i<maxTracks;i++) {
 <VARIABLE name="colRec=RGB(0.5, 0, 0)" send="1" osc_target="0" osc_trigger="1" osc_message="/colRec" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="colEmptyS=HSV(0.083, 1, 1)" send="1" osc_target="0" osc_trigger="1" osc_message="/colEmptyS" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="trackColorOverrides=" value="0.000000" send="1" osc_target="0" osc_trigger="1" osc_message="/trackColorOverrides" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="blockSelReset=RelVol.z" send="1" osc_target="0" osc_trigger="1" osc_message="/blockSelReset" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="-9166,12367,-9166" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="updateTrackColors()" script="_updTrks(selectedTracks,nextAction);" trigger_script="" trigger_type="4" trigger="1" osc_message="/updateTrackColors" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 <SCRIPT name="setSelectedTrack(newTrack)" script="noteout(0,0+newTrack,127,1);
 noteout(0,0+newTrack,0,1);
